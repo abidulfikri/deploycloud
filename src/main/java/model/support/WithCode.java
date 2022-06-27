@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-@JsonFilter("sanitize-secret")
 public abstract class WithCode extends PanacheEntity {
     @Column(nullable = false, length = 100) // Uniqueness set in each table to have explicit index name
     private String code;

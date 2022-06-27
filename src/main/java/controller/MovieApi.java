@@ -6,16 +6,21 @@ import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
 
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import java.util.List;
 
-import static io.quarkus.hibernate.orm.panache.PanacheEntityBase.listAll;
 import static java.util.stream.Collectors.toUnmodifiableList;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static model.Movie.listAll;
 
 @Path("/api/movies")
 @RequestScoped
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
 public class MovieApi {
     @Operation(
             summary = "List movies",
